@@ -1,11 +1,15 @@
 let fs = require ('fs');
 
-fs.readFile('touchpiano.wav',(err,data) => {
-  if (err) throw err
-  fs.writeFile('copypiano.waw', data,(err) => {
-    if (err) throw err
+let file = "touchpiano.wav"
 
-    console.log('Le fichier a bien etait copier !');
-    
-  })
+let read = fs.createReadStream(file)
+
+read.on('data', (chunk)=> {
+  console.log("J'ai lu " + chunk.length);
+  
+})
+
+read.on('end', () => {
+  console.log("J'ai fini de lire le fichier");
+  
 })
