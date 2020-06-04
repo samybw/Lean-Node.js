@@ -1,6 +1,10 @@
-let hello = () => {
+exports.hello = () => {
     console.log("Bonjour comment ca va ?");
     
 }
 
-module.exports = hello()
+exports.aurevoir = () => {
+    console.log('Aurevoir');
+    
+}
+
