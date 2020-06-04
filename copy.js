@@ -10,7 +10,7 @@ fs.stat(file, (err ,stats) => {
    
   let progress = 0 ;
 
- 
+  let write = fs.createWriteStream('copypiano.wav')
 
   read.on('data', (chunk) => {
     
@@ -21,9 +21,9 @@ fs.stat(file, (err ,stats) => {
      
   })
   
-  read.on('end', () => {
-    console.log("J'ai fini de lire le fichier");
+  read.pipe(write)
+  write.on('finish', () => {
+    console.log('Le fichier a bien été copié');
     
   })
-
 })
